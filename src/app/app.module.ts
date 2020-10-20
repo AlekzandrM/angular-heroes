@@ -3,10 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
+import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
+import { HeroSelectionPageComponent } from './hero-selection-page/hero-selection-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
+    AuthLayoutComponent,
+    SiteLayoutComponent,
+    HeroSelectionPageComponent
   ],
   imports: [
     BrowserModule,
