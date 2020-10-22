@@ -9,6 +9,8 @@ import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.co
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { HeroSelectionPageComponent } from './hero-selection-page/hero-selection-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { HeroComponent } from './shared/classes/hero/hero.component';
 
 
 @NgModule({
@@ -18,13 +20,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RegisterPageComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
-    HeroSelectionPageComponent
+    HeroSelectionPageComponent,
+    HeroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
