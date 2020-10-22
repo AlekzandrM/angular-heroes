@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup
   message = ''
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               private router: Router,
               private route: ActivatedRoute) { }
 

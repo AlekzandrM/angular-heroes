@@ -5,6 +5,7 @@ import {Token, User} from '../interfaces';
 export class AuthService {
 
   private token: Token | null
+  validUser: boolean
   error = ''
 
   register(user: User): void {
@@ -13,14 +14,16 @@ export class AuthService {
   }
   login(user: User): boolean {
     const key = user.email
-    const validUser = localStorage.getItem(JSON.stringify(key))
-    if (validUser) {
-      this.getToken()
-      return true
+    const potentialValidUser = localStorage.getItem(JSON.stringify(key))
+    if (potentialValidUser) {
+      this.validUser = JSON.parse(potentialValidUser).password === user.password
     }
-    else {
+    if (!this.validUser || !potentialValidUser) {
       this.error = 'Не верный email или пароль'
       return false
+    } else if (this.validUser) {
+      this.getToken()
+      return true
     }
   }
   setToken(): any {

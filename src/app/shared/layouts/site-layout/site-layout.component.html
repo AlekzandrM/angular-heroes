@@ -1,1 +1,21 @@
-<p>site-layout works!</p>
+<nav>
+  <div class="nav-wrapper grey">
+    <a routerLink="select" class="brand-logo">Heroes</a>
+
+    <ul class="auth-right">
+      <li routerLinkActive="active">
+        <a routerLink="select">User info</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="select">AVATAR</a>
+      </li>
+      <li routerLinkActive="active">
+        <a (click)="logOut()">Log out</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="main-block">
+  <router-outlet></router-outlet>
+</div>
