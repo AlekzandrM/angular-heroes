@@ -1,1 +1,63 @@
-<p>login-page works!</p>
+<form class="card"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+>
+  <div class="alert" *ngIf="authService.error">
+    {{authService.error}}
+  </div>
+  <div class="alert" *ngIf="message">
+    {{ message }}
+  </div>
+
+  <div class="card-content">
+    <span class="card-title">Войти</span>
+
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate" formControlName="email">
+        <label for="email">Email</label>
+
+        <span
+          *ngIf="form.get('email').touched && form.get('email').invalid"
+          class="helper-text red-text"
+        >
+          <span  *ngIf="form.get('email').errors.required">Email не должен быть пустым. </span>
+          <span *ngIf="form.get('email').errors.email">
+            Введите корректный email адрес.
+          </span>
+          <span *ngIf="form.get('email').errors.userEmail">
+            Пример корректного email: new.email.user@dd.co
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate" formControlName="password">
+        <label for="password">Пароль</label>
+        <span
+          *ngIf="form.get('password').touched && form.get('password').invalid"
+          class="helper-text red-text"
+        >
+        <span  *ngIf="form.get('password').errors.required">Пароль не должен быть пустым. </span>
+        <span *ngIf="form.get('password').errors.userPassword">Пример корректного пароля: ssD12@#$dd. </span>
+        <span *ngIf="form.get('password').errors.minlength">
+          Пароль должен быть не менее {{form.get('password').errors.minlength.requiredLength}} символов,
+          сейчас {{form.get('password').errors.minlength.actualLength}}.
+        </span>
+      </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-action">
+    <button
+      [disabled]="form.invalid || form.disabled"
+      class="modal-action btn waves-effect"
+      type="submit"
+    >
+      Войти</button>
+  </div>
+</form>

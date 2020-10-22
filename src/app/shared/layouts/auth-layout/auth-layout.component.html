@@ -1,2 +1,18 @@
-<p>auth-layout works!</p>
-<router-outlet></router-outlet>
+<nav>
+  <div class="nav-wrapper grey">
+    <a routerLink="/" class="brand-logo">Heroes</a>
+
+    <ul class="auth-right">
+      <li routerLinkActive="active">
+        <a routerLink="/login">Вход</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/register">Регистрация</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="auth-block">
+  <router-outlet></router-outlet>
+</div>
