@@ -11,6 +11,7 @@ import { HeroSelectionPageComponent } from './hero-selection-page/hero-selection
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HeroComponent } from './shared/classes/hero/hero.component';
+import { AlphabetComponent } from './shared/classes/alphabet/alphabet.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HeroComponent } from './shared/classes/hero/hero.component';
     AuthLayoutComponent,
     SiteLayoutComponent,
     HeroSelectionPageComponent,
-    HeroComponent
+    HeroComponent,
+    AlphabetComponent
   ],
   imports: [
     BrowserModule,

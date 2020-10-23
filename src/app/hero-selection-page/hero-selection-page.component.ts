@@ -11,10 +11,13 @@ import {MaterialService} from '../shared/classes/material.service';
 export class HeroSelectionPageComponent implements OnInit, OnDestroy {
 
   name = ''
+  inputValidator = '^[a-zA-Z]+?'
+  forbiddenSybols = '^(?=.*[!@#$%^&(),.+=/\\]\\[{}?><":;1234567890|])'
   heroes$: Subscription
   heroesList = []
   heroesResults = []
   @ViewChild('chips') instanceRef: ElementRef
+  @ViewChild('inpElement') inpElement: ElementRef
 
   constructor(private heroes: HeroesService) { }
 
@@ -32,10 +35,10 @@ export class HeroSelectionPageComponent implements OnInit, OnDestroy {
   }
 
   getByName(): void {
+    this.name.trim()
     this.heroesList = [...this.heroesList, this.name]
     this.heroes$ = this.heroes.getByName(this.name).subscribe(res => {
       this.heroesResults = res.results
-      console.log(this.heroesResults)
     })
     this.add()
     this.name = ''
@@ -44,6 +47,16 @@ export class HeroSelectionPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.heroes$) {
       this.heroes$.unsubscribe()
+    }
+  }
+
+  validateInput(): any {
+    const validInput = new RegExp(/^(?=.*[!@#$%^&(),.+=/\]\[{}?><":;1234567890|])/).test(this.name)
+
+    if (validInput) {
+      // this.name = data
+    } else {
+      // return console.log('fal', data)
     }
   }
 }

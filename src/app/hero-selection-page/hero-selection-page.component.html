@@ -1,25 +1,32 @@
 <div class="container">
+
   <div class="row">
-    <div class="col s12 searchForm">
+    <div class="col s12 ">
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s12 searchForm">
           <input
             placeholder="Enter the hero name"
-            id="first_name" type="text" class="validate"
+            id="first_name"
+            type="text"
+            class="validate"
             [(ngModel)]="name"
-            (keyup.enter)="getByName()"
+            [pattern]="inputValidator"
+            #inpElement
           >
           <label for="first_name">Find hero</label>
+
+          <div class="alphabet">
+            <app-alphabet></app-alphabet>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="chips" #chips></div>
 
   <div class="results">
-    <p>Results: {{heroesResults.length}}</p>
+    <p class="results_amount">Results: {{heroesResults? heroesResults.length : "0"}}</p>
 
     <div
       *ngIf="heroesResults.length"

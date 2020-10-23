@@ -13,12 +13,12 @@ export interface Environment {
 }
 
 export interface HeroPowerstats {
-  combat: string
-  durability: string
-  intelligence: string
-  power: string
-  speed: string
-  strength: string
+  combat?: string
+  durability?: string
+  intelligence?: string
+  power?: string
+  speed?: string
+  strength?: string
 }
 export interface HeroImage {
   url: string
