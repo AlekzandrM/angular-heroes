@@ -17,7 +17,9 @@
           <label for="first_name">Find hero</label>
 
           <div class="alphabet">
-            <app-alphabet></app-alphabet>
+            <app-alphabet
+              (onPickLetter)="getByLetter($event)"
+            ></app-alphabet>
           </div>
         </div>
       </div>

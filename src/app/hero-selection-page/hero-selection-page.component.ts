@@ -76,4 +76,10 @@ export class HeroSelectionPageComponent implements OnInit, OnDestroy {
       this.heroes$.unsubscribe()
     }
   }
+
+  getByLetter(letter: string): void{
+    this.name = letter
+    this.getByName()
+    this.name = letter
+  }
 }
