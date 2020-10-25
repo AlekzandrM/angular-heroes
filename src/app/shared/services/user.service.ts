@@ -7,6 +7,12 @@ export class UserService {
 
   addHero(hero: Hero): any {
     this.selectedHeroes = [...this.selectedHeroes, hero]
-    return console.log(this.selectedHeroes)
+  }
+  checkIsHeroSelected(hero: Hero): boolean {
+    if (this.selectedHeroes) {
+    // return !this.selectedHeroes.some(el => el === hero)
+      return this.selectedHeroes.includes(hero)
+    }
+    return false
   }
 }

@@ -10,7 +10,8 @@
             type="text"
             class="validate"
             [(ngModel)]="name"
-            [pattern]="inputValidator"
+            [latestInputValue]="name"
+            appInputName
             #inpElement
           >
           <label for="first_name">Find hero</label>
@@ -23,13 +24,13 @@
     </div>
   </div>
 
-  <div class="chips" #chips></div>
+  <div class="chips chips-initial" #chips></div>
 
   <div class="results">
     <p class="results_amount">Results: {{heroesResults? heroesResults.length : "0"}}</p>
 
     <div
-      *ngIf="heroesResults.length"
+      *ngIf="showResultsBlock"
     >
       <app-hero
         *ngFor="let hero of heroesResults"

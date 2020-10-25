@@ -28,7 +28,7 @@ export class AuthService {
   }
   setToken(): any {
     const randomStr = `f${(~~(Math.random() * 1e8)).toString(16)}`
-    const expiresDate = new Date(new Date().getTime() + 3600 * 1000).toString()
+    const expiresDate = new Date(new Date().getTime() + 3600).toString()
     this.token = {token: randomStr, expiresIn: expiresDate}
     localStorage.setItem('token', JSON.stringify(this.token))
     return this.token
@@ -38,7 +38,6 @@ export class AuthService {
     const parsedToken = JSON.parse(token)
     const expiresDate = parsedToken.expiresIn
     const expiredPeriod = new Date() > expiresDate
-    console.log((new Date(expiresDate).getTime() - new Date().getTime()) / 1000 / 60)
 
     if (expiredPeriod) {
       this.logout()

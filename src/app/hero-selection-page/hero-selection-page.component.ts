@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {HeroesService} from '../shared/services/heroes.service';
 import { Subscription } from 'rxjs';
 import {MaterialService} from '../shared/classes/material.service';
@@ -11,12 +11,12 @@ import {MaterialService} from '../shared/classes/material.service';
 export class HeroSelectionPageComponent implements OnInit, OnDestroy {
 
   name = ''
-  inputValidator = '^[a-zA-Z]+?'
   forbiddenSybols = '^(?=.*[!@#$%^&(),.+=/\\]\\[{}?><":;1234567890|])'
   heroes$: Subscription
   heroesList = []
   heroesResults = []
-  @ViewChild('chips') instanceRef: ElementRef
+  showResultsBlock = false
+  @ViewChild('chips') chipsRef: ElementRef
   @ViewChild('inpElement') inpElement: ElementRef
 
   constructor(private heroes: HeroesService) { }
@@ -24,39 +24,56 @@ export class HeroSelectionPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  add(): void {
-    const instance = MaterialService.initChips(this.instanceRef)
+  @HostListener('keyup', ['$event']) onkeyup(event: any): any {
+    const invalidInput = new RegExp(this.forbiddenSybols).test(this.name)
+    const validEnter = !invalidInput && event.key === 'Enter'
+
+    if (!validEnter) {
+      event.preventDefault()
+      return
+    }
+    this.getByName()
+    this.addChip()
+  }
+
+  addChip(): void {
+    const instance = MaterialService.initChips(this.chipsRef)
     this.heroesList.forEach(el => {
       instance.addChip({tag: el})
     })
-    const elems = document.querySelectorAll('.close')
-    const arr = Array.from(elems)
-    arr.map(el => el.innerHTML = '&#10008;')
+
+    const chips = document.querySelectorAll('.chip')
+    const arrChips = Array.from(chips)
+
+    arrChips.map(el => {
+      el.querySelector('.close').innerHTML = '&#10008;'
+      this.getByChip(el)
+    })
+  }
+  getByChip(el: any): void {
+    el.addEventListener('click', () => {
+      this.name = el.textContent.slice(0, -1)
+      this.getByName()
+      this.name = el.textContent.slice(0, -1)
+    })
   }
 
   getByName(): void {
     this.name.trim()
     this.heroesList = [...this.heroesList, this.name]
     this.heroes$ = this.heroes.getByName(this.name).subscribe(res => {
+      if (res.response === 'error') {
+        this.showResultsBlock = false
+      }
+      this.showResultsBlock = true
       this.heroesResults = res.results
     })
-    this.add()
     this.name = ''
   }
 
   ngOnDestroy(): void {
     if (this.heroes$) {
       this.heroes$.unsubscribe()
-    }
-  }
-
-  validateInput(): any {
-    const validInput = new RegExp(/^(?=.*[!@#$%^&(),.+=/\]\[{}?><":;1234567890|])/).test(this.name)
-
-    if (validInput) {
-      // this.name = data
-    } else {
-      // return console.log('fal', data)
     }
   }
 }

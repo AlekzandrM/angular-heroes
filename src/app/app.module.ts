@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HeroComponent } from './shared/classes/hero/hero.component';
 import { AlphabetComponent } from './shared/classes/alphabet/alphabet.component';
+import { InputNameDirective } from './shared/directives/input-name.directive';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AlphabetComponent } from './shared/classes/alphabet/alphabet.component'
     SiteLayoutComponent,
     HeroSelectionPageComponent,
     HeroComponent,
-    AlphabetComponent
+    AlphabetComponent,
+    InputNameDirective
   ],
   imports: [
     BrowserModule,
