@@ -14,11 +14,12 @@ export class HeroComponent implements OnInit {
 
   @Input() hero: Hero
   @ViewChild('selectBtn') selectBtn: ElementRef
+
   activeButton: boolean
 
   constructor(private userService: UserService) { }
 
-  ngOnInit(): any {
+  ngOnInit(): boolean {
     return this.activeButton = this.userService.checkIsHeroSelected(this.hero)
   }
 

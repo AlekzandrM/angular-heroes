@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AuthGuard} from './shared/services/auth.guard';
 
 import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {RegisterPageComponent} from './register-page/register-page.component';
 import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.component';
 import {HeroSelectionPageComponent} from './hero-selection-page/hero-selection-page.component';
-import {AuthGuard} from './shared/services/auth.guard';
 import {UserInfoPageComponent} from './user-info-page/user-info-page.component';
+import {HeroesListTabComponent} from './shared/classes/heroes-list-tab/heroes-list-tab.component';
+import {HistoryTabComponent} from './shared/classes/history-tab/history-tab.component';
+import {PowerUpsTabComponent} from './shared/classes/power-ups-tab/power-ups-tab.component';
 
 const routes: Routes = [
   {
@@ -20,7 +23,12 @@ const routes: Routes = [
   {
     path: '', component: SiteLayoutComponent, children: [
       {path: 'select', component: HeroSelectionPageComponent, canActivate: [AuthGuard]},
-      {path: 'info', component: UserInfoPageComponent, canActivate: [AuthGuard]}
+      {path: 'info', component: UserInfoPageComponent, canActivate: [AuthGuard], children: [
+          {path: '', redirectTo: 'list', pathMatch: 'full'},
+          {path: 'list', component: HeroesListTabComponent, canActivateChild: [AuthGuard]},
+          {path: 'history', component: HistoryTabComponent, canActivateChild: [AuthGuard]},
+          {path: 'power', component: PowerUpsTabComponent, canActivateChild: [AuthGuard]},
+        ]}
     ]
   }
 ];

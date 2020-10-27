@@ -18,7 +18,7 @@
 
           <div class="alphabet">
             <app-alphabet
-              (emitLetter)="getByChipOrLetter($event)"
+              (emitLetter)="onFetchByChipOrLetter($event)"
             ></app-alphabet>
           </div>
         </div>
@@ -26,14 +26,10 @@
     </div>
   </div>
 
-<!--    <div-->
-<!--      class="chips chips-initial"-->
-<!--      #chips-->
-<!--    ></div>-->
   <div *ngIf="heroesList.length > 0" class="chipsBlock">
     <div class="chipElement"
          *ngFor="let chip of heroesList"
-    ><span (click)="getByChipOrLetter(chip)">{{chip}}</span>
+    ><span (click)="onFetchByChipOrLetter(chip)">{{chip}}</span>
     </div>
   </div>
 

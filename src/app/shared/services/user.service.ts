@@ -4,9 +4,9 @@ import {Hero} from '../interfaces';
 @Injectable({providedIn: 'root'})
 export class UserService {
 
-  selectedHeroes = []
+  selectedHeroes: Hero[] = []
 
-  addHero(hero: Hero): any {
+  addHero(hero: Hero): void {
     this.selectedHeroes = [...this.selectedHeroes, hero]
   }
 
