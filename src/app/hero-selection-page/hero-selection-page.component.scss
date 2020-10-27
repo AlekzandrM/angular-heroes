@@ -1,9 +1,23 @@
 .row {
   margin-bottom: 0;
 }
-.chips {
-  margin: 0 10px;
-  padding: 0;
+.chipsBlock {
+  display: flex;
+  justify-content: flex-start;
+}
+.chipElement {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #26A69A;
+  border-radius: 20px;
+  color: white;
+  min-width: 40px;
+  height: 2rem;
+  text-align: center;
+  cursor: pointer;
+}
+.chipElement:hover {
+  background-color: #49C9BD;
 }
 .results_amount {
   margin: 10px 0px;

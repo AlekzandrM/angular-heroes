@@ -12,13 +12,13 @@
             [(ngModel)]="name"
             [latestInputValue]="name"
             appInputName
-            #inpElement
+            (keyup.enter)="onInputName()"
           >
           <label for="first_name">Find hero</label>
 
           <div class="alphabet">
             <app-alphabet
-              (onPickLetter)="getByLetter($event)"
+              (emitLetter)="getByChipOrLetter($event)"
             ></app-alphabet>
           </div>
         </div>
@@ -26,7 +26,16 @@
     </div>
   </div>
 
-  <div class="chips chips-initial" #chips></div>
+<!--    <div-->
+<!--      class="chips chips-initial"-->
+<!--      #chips-->
+<!--    ></div>-->
+  <div *ngIf="heroesList.length > 0" class="chipsBlock">
+    <div class="chipElement"
+         *ngFor="let chip of heroesList"
+    ><span (click)="getByChipOrLetter(chip)">{{chip}}</span>
+    </div>
+  </div>
 
   <div class="results">
     <p class="results_amount">Results: {{heroesResults? heroesResults.length : "0"}}</p>

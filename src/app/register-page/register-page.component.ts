@@ -44,6 +44,7 @@ export class RegisterPageComponent implements OnInit {
       password: this.form.value.password,
       name: this.form.value.name
     }
+
     this.authService.register(user)
     this.router.navigate(['/select'])
     this.form.enable()

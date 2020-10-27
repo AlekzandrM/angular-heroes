@@ -12,9 +12,11 @@ export class AuthService {
     localStorage.setItem(JSON.stringify(user.email), JSON.stringify(user))
     this.setToken()
   }
+
   login(user: User): boolean {
     const key = user.email
     const potentialValidUser = localStorage.getItem(JSON.stringify(key))
+
     if (potentialValidUser) {
       this.validUser = JSON.parse(potentialValidUser).password === user.password
     }
@@ -29,6 +31,7 @@ export class AuthService {
   setToken(): any {
     const randomStr = `f${(~~(Math.random() * 1e8)).toString(16)}`
     const expiresDate = new Date(new Date().getTime() + 3600).toString()
+
     this.token = {token: randomStr, expiresIn: expiresDate}
     localStorage.setItem('token', JSON.stringify(this.token))
     return this.token

@@ -1,6 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import {MaterialService} from '../material.service';
-import {HeroesService} from '../../services/heroes.service';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-alphabet',
@@ -9,28 +7,19 @@ import {HeroesService} from '../../services/heroes.service';
 })
 export class AlphabetComponent implements OnInit {
 
+  letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
   letter = 'A'
-  @ViewChild('content') content: ElementRef
-  @Output() onPickLetter: EventEmitter<string> = new EventEmitter<string>()
+  isVisible = false
+  @Output() emitLetter: EventEmitter<string> = new EventEmitter<string>()
 
   constructor() { }
 
   ngOnInit(): void {
-    this.pickLetter()
   }
 
-  openList(): void {
-    const instance = MaterialService.initDropdown(this.content.nativeElement)
-    instance.open()
+  pickLetter(letter: string): void {
+    this.letter = letter
+    this.isVisible = false
+    this.emitLetter.emit(this.letter)
   }
-
-  pickLetter(): void {
-    const allLetters = document.getElementById('dropdown1').children
-    const allLettersArr = Array.from(allLetters)
-    allLettersArr.forEach(li => li.addEventListener('click', () => {
-      this.letter = li.textContent
-      this.onPickLetter.emit(this.letter)
-    }))
-  }
-
 }

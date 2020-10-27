@@ -7,6 +7,7 @@ import {RegisterPageComponent} from './register-page/register-page.component';
 import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.component';
 import {HeroSelectionPageComponent} from './hero-selection-page/hero-selection-page.component';
 import {AuthGuard} from './shared/services/auth.guard';
+import {UserInfoPageComponent} from './user-info-page/user-info-page.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: '', component: SiteLayoutComponent, children: [
-      {path: 'select', component: HeroSelectionPageComponent, canActivate: [AuthGuard]}
+      {path: 'select', component: HeroSelectionPageComponent, canActivate: [AuthGuard]},
+      {path: 'info', component: UserInfoPageComponent, canActivate: [AuthGuard]}
     ]
   }
 ];
