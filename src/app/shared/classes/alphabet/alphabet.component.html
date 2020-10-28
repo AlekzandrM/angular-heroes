@@ -1,0 +1,17 @@
+<div class="block">
+
+  <button (click)="isVisible = !isVisible">{{letter}}</button>
+
+  <div class="wrapper" *ngIf="isVisible">
+    <div
+      class="letter"
+      *ngFor="let letter of letters"
+    >
+      <span (click)="pickLetter(letter)">
+        {{letter}}
+      </span>
+    </div>
+  </div>
+
+</div>
+

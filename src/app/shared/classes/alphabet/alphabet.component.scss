@@ -1,0 +1,27 @@
+button {
+  display: block;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #26A69A;
+}
+button:hover, .letter:hover {
+  background-color: #49C9BD;
+  color: white;
+}
+.wrapper {
+  margin-top: 3px;
+  border: 1px solid #49C9BD;
+  border-radius: 3px;
+}
+.letter {
+  width: 35px;
+  color: #26A69A;
+  font-size: 12px;
+  border: 1px solid white;
+  text-align: center;
+  padding: 3px;
+}

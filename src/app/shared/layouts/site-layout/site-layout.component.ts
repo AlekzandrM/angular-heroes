@@ -9,8 +9,10 @@ import {Router} from '@angular/router';
 })
 export class SiteLayoutComponent implements OnInit {
 
-  constructor(private auth: AuthService,
-              private router: Router) { }
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }

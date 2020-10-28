@@ -1,1 +1,53 @@
-<p>hero-selection-page works!</p>
+<div class="container">
+
+  <div class="row">
+    <div class="col s12 ">
+      <div class="row">
+        <div class="input-field col s12 searchForm">
+          <input
+            placeholder="Enter the hero name"
+            id="first_name"
+            type="text"
+            class="validate"
+            [(ngModel)]="name"
+            [latestInputValue]="name"
+            appInputName
+            (keyup.enter)="onInputName()"
+          >
+          <label for="first_name">Find hero</label>
+
+          <div class="alphabet">
+            <app-alphabet
+              (emitLetter)="getByChipOrLetter($event)"
+            ></app-alphabet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--    <div-->
+<!--      class="chips chips-initial"-->
+<!--      #chips-->
+<!--    ></div>-->
+  <div *ngIf="heroesList.length > 0" class="chipsBlock">
+    <div class="chipElement"
+         *ngFor="let chip of heroesList"
+    ><span (click)="getByChipOrLetter(chip)">{{chip}}</span>
+    </div>
+  </div>
+
+  <div class="results">
+    <p class="results_amount">Results: {{heroesResults? heroesResults.length : "0"}}</p>
+
+    <div
+      *ngIf="showResultsBlock"
+    >
+      <app-hero
+        *ngFor="let hero of heroesResults"
+        [hero]="hero"
+      ></app-hero>
+    </div>
+
+  </div>
+</div>

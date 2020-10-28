@@ -1,0 +1,34 @@
+.block {
+  margin: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border: 1px solid black;
+}
+.block_name {
+  padding: 5px;
+  & .block_name-name {
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  & .block_name-avatar img {
+    width: 100px;
+    height: 100px;
+  }
+}
+.block_select {
+  width: 100px;
+  & button {
+    position: relative;
+    top: 110px;
+  }
+}
+.block_stats {
+  margin: 5px;
+  padding: 5px;
+  & p {
+    margin-bottom: 10px;
+  }
+}
