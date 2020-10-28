@@ -1,61 +1,64 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {HeroesService} from '../shared/services/heroes.service';
-import { Subscription } from 'rxjs';
+import {Subject} from 'rxjs';
+import {Hero} from '../shared/interfaces';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-hero-selection-page',
   templateUrl: './hero-selection-page.component.html',
   styleUrls: ['./hero-selection-page.component.scss']
 })
-export class HeroSelectionPageComponent implements OnInit, OnDestroy {
+export class HeroSelectionPageComponent implements OnDestroy {
 
   name = ''
   forbiddenSybols = '^(?=.*[!@#$%^&(),.+=/\\]\\[{}?><":;1234567890|])'
-  heroes$: Subscription
-  heroesList = []
-  heroesResults = []
+  heroesList: string[] = []
+  heroesResults: Hero[] = []
   showResultsBlock = false
+  private readonly componentDestroyed$: Subject<boolean> = new Subject<boolean>()
 
-  constructor(private heroes: HeroesService) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private heroesService: HeroesService) { }
 
   onInputName(): void {
     const invalidInput = new RegExp(this.forbiddenSybols).test(this.name)
 
-    if (invalidInput) {
-      return
+    if (!invalidInput) {
+      this.onFetchByName()
     }
-    this.getByName()
   }
 
-  getByChipOrLetter(chipOrLetter: string): void {
+  onFetchByChipOrLetter(chipOrLetter: string): void {
     this.name = chipOrLetter
-    this.getByName()
+    this.onFetchByName()
     this.name = chipOrLetter
   }
 
-  getByName(): void {
+  onFetchByName(): void {
     this.name.trim()
-    const nameExist = this.heroesList.some(el => el === this.name)
+    const nameExist = this.heroesList.some(heroName => heroName === this.name)
 
     if (!nameExist) {
       this.heroesList = [...this.heroesList, this.name]
     }
-    this.heroes$ = this.heroes.getByName(this.name).subscribe(res => {
+    this.fetchHeroes()
+    this.name = ''
+  }
+  fetchHeroes(): void {
+    this.heroesService.getByName(this.name)
+      .pipe(
+        takeUntil(this.componentDestroyed$)
+      )
+      .subscribe(res => {
       if (res.response === 'error') {
         this.showResultsBlock = false
       }
       this.showResultsBlock = true
-      this.heroesResults = res.results
+      this.heroesResults = res.results;
     })
-    this.name = ''
   }
 
   ngOnDestroy(): void {
-    if (this.heroes$) {
-      this.heroes$.unsubscribe()
-    }
+      this.componentDestroyed$.next(true)
   }
 }

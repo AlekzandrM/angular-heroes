@@ -28,7 +28,7 @@ export class AuthService {
       return true
     }
   }
-  setToken(): any {
+  setToken(): Token {
     const randomStr = `f${(~~(Math.random() * 1e8)).toString(16)}`
     const expiresDate = new Date(new Date().getTime() + 3600).toString()
 

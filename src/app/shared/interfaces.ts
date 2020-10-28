@@ -21,15 +21,45 @@ export interface HeroPowerstats {
   strength?: string
 }
 export interface HeroImage {
-  url: string
+  url?: string
+}
+export interface HeroAppearance {
+  eyeColor?: string
+  gender?: string
+  hairColor?: string
+  height?: string[]
+  race?: string
+  weight?: string[]
+}
+export interface HeroBiography {
+  aliases?: string[]
+  alignment?: string
+  alterEgos?: string
+  firstAppearance?: string
+  fullName?: string
+  placeOfBirth?: string
+  publisher?: string
+}
+export interface HeroConnections {
+  groupAffiliation?: string
+  relatives?: string
+}
+export interface HeroWork {
+  base?: string
+  occupation?: string
 }
 export interface Hero {
   id: string
   name: string
-  appearance: object
-  biography: object
-  connections: object
+  appearance: HeroAppearance
+  biography: HeroBiography
+  connections: HeroConnections
   image: HeroImage
   powerstats: HeroPowerstats
-  work: object
+  work: HeroWork
+}
+export interface FetchHeroesResponse {
+  response: string
+  results: Hero[]
+  resultsFor: string
 }

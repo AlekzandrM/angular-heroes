@@ -1,25 +1,22 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {AlphabetService} from '../alphabet.service';
 
 @Component({
   selector: 'app-alphabet',
   templateUrl: './alphabet.component.html',
   styleUrls: ['./alphabet.component.scss']
 })
-export class AlphabetComponent implements OnInit {
+export class AlphabetComponent {
 
-  letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
-  letter = 'A'
-  isVisible = false
   @Output() emitLetter: EventEmitter<string> = new EventEmitter<string>()
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  currentLetter = 'A'
+  isVisible = false
+  private letters: string[] = AlphabetService.ALPHABET
 
   pickLetter(letter: string): void {
-    this.letter = letter
+    this.currentLetter = letter
     this.isVisible = false
-    this.emitLetter.emit(this.letter)
+    this.emitLetter.emit(this.currentLetter)
   }
 }

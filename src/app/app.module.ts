@@ -15,6 +15,9 @@ import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.co
 import { HeroComponent } from './shared/classes/hero/hero.component';
 import { AlphabetComponent } from './shared/classes/alphabet/alphabet.component';
 import { InputNameDirective } from './shared/directives/input-name.directive';
+import { HeroesListTabComponent } from './shared/classes/heroes-list-tab/heroes-list-tab.component';
+import { HistoryTabComponent } from './shared/classes/history-tab/history-tab.component';
+import { PowerUpsTabComponent } from './shared/classes/power-ups-tab/power-ups-tab.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { InputNameDirective } from './shared/directives/input-name.directive';
     HeroComponent,
     AlphabetComponent,
     InputNameDirective,
-    UserInfoPageComponent
+    UserInfoPageComponent,
+    HeroesListTabComponent,
+    HistoryTabComponent,
+    PowerUpsTabComponent
   ],
   imports: [
     BrowserModule,

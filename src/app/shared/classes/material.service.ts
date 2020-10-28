@@ -1,6 +1,6 @@
 import {ElementRef} from '@angular/core';
 
-declare var M
+declare const M
 
 export interface Chip {
   tag?: string
