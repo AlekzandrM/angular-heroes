@@ -13,4 +13,8 @@ export class UserService {
   checkIsHeroSelected(hero: Hero): boolean {
     return !this.selectedHeroes.some(({id}) => id === hero.id)
   }
+
+  deleteHero(heroToDelete: Hero): void {
+    this.selectedHeroes = this.selectedHeroes.filter(hero => hero.id !== heroToDelete.id )
+  }
 }

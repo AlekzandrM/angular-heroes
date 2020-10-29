@@ -1,6 +1,6 @@
 import {ElementRef} from '@angular/core';
-
-declare const M
+import * as M from '../../../assets/materialize-v1.0.0/materialize/js/materialize.js'
+// declare const M
 
 export interface Chip {
   tag?: string
@@ -20,6 +20,12 @@ export interface MaterialFormSelect {
   getSelectedValues?(): void
   destroy?(): void
 }
+export interface MaterialCarousel {
+  next?(): void
+  prev?(): void
+  set?(): void
+  destroy?(): void
+}
 
 export class MaterialService {
   static initChips(ref: ElementRef, option: {} = {}): MaterialChips {
@@ -30,5 +36,13 @@ export class MaterialService {
   }
   static initFormSelect(ref: ElementRef, options: {} = {}): MaterialFormSelect {
     return M.FormSelect.init(ref.nativeElement, options)
+  }
+  static initCarousel(ref: ElementRef): MaterialCarousel {
+    return M.Carousel.init(ref.nativeElement, {
+      duration: 400,
+      fullWidth: true,
+      indicators: true,
+      numVisible: 1
+    })
   }
 }

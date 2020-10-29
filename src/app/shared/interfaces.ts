@@ -57,6 +57,7 @@ export interface Hero {
   image: HeroImage
   powerstats: HeroPowerstats
   work: HeroWork
+  isVisible?: boolean
 }
 export interface FetchHeroesResponse {
   response: string
