@@ -11,6 +11,7 @@ import {UserInfoPageComponent} from './user-info-page/user-info-page.component';
 import {HeroesListTabComponent} from './shared/classes/heroes-list-tab/heroes-list-tab.component';
 import {HistoryTabComponent} from './shared/classes/history-tab/history-tab.component';
 import {PowerUpsTabComponent} from './shared/classes/power-ups-tab/power-ups-tab.component';
+import {HeroInfoPageComponent} from './hero-info-page/hero-info-page.component';
 
 const routes: Routes = [
   {
@@ -23,11 +24,12 @@ const routes: Routes = [
   {
     path: '', component: SiteLayoutComponent, children: [
       {path: 'select', component: HeroSelectionPageComponent, canActivate: [AuthGuard]},
+      {path: 'select/:id', component: HeroInfoPageComponent, canActivate: [AuthGuard]},
       {path: 'info', component: UserInfoPageComponent, canActivate: [AuthGuard], children: [
           {path: '', redirectTo: 'list', pathMatch: 'full'},
           {path: 'list', component: HeroesListTabComponent, canActivateChild: [AuthGuard]},
           {path: 'history', component: HistoryTabComponent, canActivateChild: [AuthGuard]},
-          {path: 'power', component: PowerUpsTabComponent, canActivateChild: [AuthGuard]},
+          {path: 'power', component: PowerUpsTabComponent, canActivateChild: [AuthGuard]}
         ]}
     ]
   }

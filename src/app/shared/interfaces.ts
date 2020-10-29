@@ -23,25 +23,26 @@ export interface HeroPowerstats {
 export interface HeroImage {
   url?: string
 }
+
 export interface HeroAppearance {
-  eyeColor?: string
   gender?: string
-  hairColor?: string
   height?: string[]
   race?: string
   weight?: string[]
+  'eye-color'?: string
+  'hair-color'?: string
 }
 export interface HeroBiography {
   aliases?: string[]
   alignment?: string
-  alterEgos?: string
-  firstAppearance?: string
-  fullName?: string
-  placeOfBirth?: string
+  'alter-egos'?: string
+  'first-appearance'?: string
+  'full-name'?: string
+  'place-of-birth'?: string
   publisher?: string
 }
 export interface HeroConnections {
-  groupAffiliation?: string
+  'group-affiliation'?: string
   relatives?: string
 }
 export interface HeroWork {
@@ -51,17 +52,17 @@ export interface HeroWork {
 export interface Hero {
   id: string
   name: string
-  appearance: HeroAppearance
-  biography: HeroBiography
-  connections: HeroConnections
-  image: HeroImage
-  powerstats: HeroPowerstats
-  work: HeroWork
+  appearance?: HeroAppearance
+  biography?: HeroBiography
+  connections?: HeroConnections
+  image?: HeroImage
+  powerstats?: HeroPowerstats
+  work?: HeroWork
   isVisible?: boolean
 }
 export interface FetchHeroesResponse {
   response: string
-  results: Hero[]
+  results: Hero[] | Hero
   resultsFor: string
 }
 

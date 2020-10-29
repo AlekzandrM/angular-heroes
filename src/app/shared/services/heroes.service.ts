@@ -7,10 +7,13 @@ import {FetchHeroesResponse} from '../interfaces';
 @Injectable({providedIn: 'root'})
 export class HeroesService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getByName(name: string): Observable<FetchHeroesResponse> {
     return this.http.get<FetchHeroesResponse>(`${environment.heroesUrl}/search/${name}`)
+  }
+
+  getById(id: string): Observable<FetchHeroesResponse> {
+    return  this.http.get<FetchHeroesResponse>(`${environment.heroesUrl}/${id}`)
   }
 }

@@ -3,7 +3,7 @@
   <div class="results">
     <p class="results_amount">Selected heroes: {{selectedHeroes? selectedHeroes.length : "0"}}</p>
 
-    <div  *ngIf="selectedHeroes">
+    <div  *ngIf="selectedHeroes.length > 0">
       <div class="block" *ngFor="let hero of selectedHeroes">
         <div class="block_name">
           <p class="block_name-name">{{hero.name}}</p>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="block_select">
-          <button class="btn btn-block" >select</button>
+          <button class="btn btn-block" [routerLink]="['/select', hero.id]">select</button>
           <button class="btn btn-block" (click)="toDeleteHero(hero)">delete</button>
         </div>
       </div>
