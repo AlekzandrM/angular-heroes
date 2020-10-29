@@ -64,3 +64,10 @@ export interface FetchHeroesResponse {
   results: Hero[]
   resultsFor: string
 }
+
+export interface HistoryTab {
+  battleDate: Date
+  heroName: string
+  opponentName: string
+  result: boolean
+}
