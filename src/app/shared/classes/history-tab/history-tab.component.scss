@@ -1,0 +1,12 @@
+th {
+  cursor: pointer;
+}
+th:hover {
+  color: red;
+}
+td, th {
+  text-align: center;
+}
+td:first-child, th:first-child {
+  text-align: left;
+}
