@@ -62,7 +62,7 @@ export interface Hero {
 }
 export interface FetchHeroesResponse {
   response: string
-  results: Hero[] | Hero
+  results?: Hero[]
   resultsFor: string
 }
 
@@ -71,4 +71,13 @@ export interface HistoryTab {
   heroName: string
   opponentName: string
   result: boolean
+}
+
+export interface Powerups {
+  image?: string
+  title: string
+  description: string
+  active?: boolean
+  titleIsVisible?: boolean
+  isPicked?: boolean
 }

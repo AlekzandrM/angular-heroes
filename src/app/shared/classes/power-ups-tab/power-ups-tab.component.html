@@ -1,1 +1,36 @@
-<p>power-ups-tab works!</p>
+<div class="container">
+  <div class="header">
+    <p>List of powerups</p>
+    <p>uses left {{usesCount}}</p>
+  </div>
+
+  <div class="wrap">
+    <div *ngIf="listOfPickedPowerups.length > 0">
+      <div class="pickedPowerups listPowerups" *ngFor="let pickedPowerup of listOfPickedPowerups">
+        <img src="{{pickedPowerup.image}}" alt="">
+        <div class="info pickedInfo">
+          <p class="title">{{pickedPowerup.title}}</p>
+          <p>{{pickedPowerup.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="listPowerups">
+    <div class="powerup" *ngFor="let powerup of listOfPowerups">
+      <button
+        (mouseenter)="showTitle(powerup.title)"
+        (mouseleave)="hideTitle(powerup.title)"
+        (click)="pickPowerup($event, powerup)"
+        [disabled]="powerup.isPicked"
+      >
+        <img src="{{powerup.image}}" alt="">
+      </button>
+
+      <div class="info" *ngIf="powerup.titleIsVisible">
+        <p class="title">{{powerup.title}}</p>
+        <p>{{powerup.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
