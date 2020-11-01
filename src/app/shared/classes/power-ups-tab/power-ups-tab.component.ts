@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Powerups} from '../../interfaces';
 import {PowerupsService} from '../powerups.service';
 
 @Component({
@@ -9,45 +8,23 @@ import {PowerupsService} from '../powerups.service';
 })
 export class PowerUpsTabComponent implements OnInit {
 
-  private shield = PowerupsService.getShield()
-  private mjolnir = PowerupsService.getMjolnir()
-  private nanoArmor = PowerupsService.getArmor()
-  private cloack = PowerupsService.getCloak()
-  private ring = PowerupsService.getRing()
-  private flashBoots = PowerupsService.getBoots()
-
-  listOfPowerups: Powerups[] = []
-  listOfPickedPowerups: Powerups[] = []
-
-  usesCount = 3
-
-  constructor() { }
+  listOfPowerups: PowerupsService[] = []
 
   ngOnInit(): void {
-    this.listOfPowerups = [this.shield, this.mjolnir, this.nanoArmor, this.cloack, this.ring, this.flashBoots]
+    this.listOfPowerups = [
+      new PowerupsService('Captain America shield', 'durability +10', true, '../../assets/kashild.png', true, false, 3),
+      new PowerupsService('Mjolnir', 'power +10', true, '../../assets/mjolnir.png', true, false, 3),
+      new PowerupsService('Ironman nano armor', 'combat +10', true, '../../assets/ironman.png', true, false, 3),
+      new PowerupsService('Dr. Stranges cloak', 'intelligence +10', true, '../../assets/cloak.png', true, false, 3),
+      new PowerupsService('Green lanterns ring', 'strength +10', true, '../../assets/ring.png', true, false, 3),
+      new PowerupsService('Flash boots', 'speed +10', true, '../../assets/boots.png', true, false, 3)
+    ]
   }
 
-  showTitle(title: string): void {
-    this.listOfPowerups.forEach(powerup => {
-      if (powerup.title === title) {
-        powerup.titleIsVisible = true
-      }
-    })
-  }
-  hideTitle(title: string): void {
-    this.listOfPowerups.forEach(powerup => {
-      if (powerup.title === title) {
-        powerup.titleIsVisible = false
-      }
-    })
+  sortPowerupsByUsesLeft(): PowerupsService[] {
+    const sortedList = this.listOfPowerups.sort((a: PowerupsService, b: PowerupsService) => a.usesCount > b.usesCount ? 1 : -1)
+
+    return this.listOfPowerups = [...sortedList]
   }
 
-  pickPowerup(event, powerup: Powerups): void {
-    if (this.usesCount > 0) {
-      this.usesCount--
-      event.target.style.backgroundColor = '#9E9E9E'
-      this.listOfPickedPowerups = [...this.listOfPickedPowerups, powerup]
-      powerup.isPicked = true
-    }
-  }
 }

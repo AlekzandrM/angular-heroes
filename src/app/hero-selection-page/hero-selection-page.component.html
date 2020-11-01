@@ -3,7 +3,8 @@
   <div class="row">
     <div class="col s12 ">
       <div class="row">
-        <div class="input-field col s12 searchForm">
+        <div class="col s12 searchForm">
+          <label for="first_name">Find hero: </label>
           <input
             placeholder="Enter the hero name"
             id="first_name"
@@ -14,7 +15,6 @@
             appInputName
             (keyup.enter)="onInputName()"
           >
-          <label for="first_name">Find hero</label>
 
           <div class="alphabet">
             <app-alphabet

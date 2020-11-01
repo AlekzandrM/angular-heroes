@@ -17,7 +17,7 @@ export class HeroesListTabComponent implements OnInit {
     this.selectedHeroes = this.userService.selectedHeroes
   }
 
-  toDeleteHero(heroToDelete: Hero): void {
+  deleteHero(heroToDelete: Hero): void {
     this.selectedHeroes = this.selectedHeroes.filter(hero => hero.id !== heroToDelete.id)
     this.userService.deleteHero(heroToDelete)
   }

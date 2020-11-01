@@ -21,20 +21,30 @@ export class HistoryTabComponent implements OnInit {
   }
 
   sortByDate(): HistoryTab[] {
-    // @ts-ignore
-    return this.heroesList.sort(((a: HistoryTab, b: HistoryTab) => a.battleDate - b.battleDate))
+    const heroesListSortedByDate = this.heroesList.sort(((a: HistoryTab, b: HistoryTab) => a.battleDate > b.battleDate ? 1 : -1))
+
+    this.heroesList = [...heroesListSortedByDate]
+    return this.heroesList
   }
 
   sortByHeroName(): HistoryTab[] {
-    // @ts-ignore
-    return this.heroesList.sort(((a: HistoryTab, b: HistoryTab) => (a.heroName > b.heroName) ? 1 : -1 ))
+    const heroesListSortedByName = this.heroesList.sort(((a: HistoryTab, b: HistoryTab) => (a.heroName > b.heroName) ? 1 : -1 ))
+
+    this.heroesList = [...heroesListSortedByName]
+    return this.heroesList
   }
 
   sortByOpponentName(): HistoryTab[] {
-    return this.heroesList.sort((a: HistoryTab, b: HistoryTab) => a.opponentName > b.opponentName ? 1 : -1)
+    const heroesListSortedByOpponentName = this.heroesList.sort((a: HistoryTab, b: HistoryTab) => a.opponentName > b.opponentName ? 1 : -1)
+
+    this.heroesList = [...heroesListSortedByOpponentName]
+    return this.heroesList
   }
 
   sortByBattleResult(): HistoryTab[] {
-    return this.heroesList.sort((a: HistoryTab) => a.result === false ? 1 : -1)
+    const heroesListSortedByBattleResult = this.heroesList.sort((a: HistoryTab) => a.result === false ? 1 : -1)
+
+    this.heroesList = [...heroesListSortedByBattleResult]
+    return this.heroesList
   }
 }
