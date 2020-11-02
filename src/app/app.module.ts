@@ -19,6 +19,8 @@ import { HeroComponent } from './shared/classes/hero/hero.component';
 import { AlphabetComponent } from './shared/classes/alphabet/alphabet.component';
 import { InputNameDirective } from './shared/directives/input-name.directive';
 import { HeroInfoPageComponent } from './hero-info-page/hero-info-page.component';
+import { HeroesBattlePageComponent } from './heroes-battle-page/heroes-battle-page.component';
+import { HeroInCombatComponent } from './shared/classes/hero-in-combat/hero-in-combat.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { HeroInfoPageComponent } from './hero-info-page/hero-info-page.component
     HeroesListTabComponent,
     HistoryTabComponent,
     PowerUpsTabComponent,
-    HeroInfoPageComponent
+    HeroInfoPageComponent,
+    HeroesBattlePageComponent,
+    HeroInCombatComponent
   ],
   imports: [
     BrowserModule,

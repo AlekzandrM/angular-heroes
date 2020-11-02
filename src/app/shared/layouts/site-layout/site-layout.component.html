@@ -2,12 +2,20 @@
   <div class="nav-wrapper grey">
     <a routerLink="select" class="brand-logo">Heroes</a>
 
+    <div
+      class="fight"
+      *ngIf="selectedHeroesList.length > 0"
+      routerLink="battle"
+    >
+      Fight!
+    </div>
+
     <ul class="auth-right">
       <li routerLinkActive="active">
         <a routerLink="info">User info</a>
       </li>
       <li routerLinkActive="active">
-        <a routerLink="info">AVATAR</a>
+        <a >AVATAR</a>
       </li>
       <li routerLinkActive="active">
         <a (click)="logOut()">Log out</a>
