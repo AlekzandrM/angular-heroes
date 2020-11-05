@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Token, User} from '../interfaces';
-import {HistoryService} from '../classes/history.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -10,12 +9,9 @@ export class AuthService {
   error = ''
   userName = ''
 
-  constructor(private historyService: HistoryService) {
-  }
-
   register(user: User): void {
-    localStorage.setItem(JSON.stringify(user.email), JSON.stringify(user))
-    this.historyService.setUserName(user.name)
+    user.previousBattles = []
+    localStorage.setItem(JSON.stringify(['user']), JSON.stringify(user))
     this.setToken()
   }
 
@@ -36,6 +32,7 @@ export class AuthService {
     }
   }
   setToken(): Token {
+    // tslint:disable-next-line:no-bitwise
     const randomStr = `f${(~~(Math.random() * 1e8)).toString(16)}`
     const expiresDate = new Date(new Date().getTime() + 3600).toString()
 

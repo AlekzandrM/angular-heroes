@@ -2,6 +2,7 @@ export interface User {
   email: string
   password: string
   name?: string
+  previousBattles?: HistoryTab[]
 }
 export interface Token {
   token: string
