@@ -6,43 +6,12 @@
   <div class="info">
     <div class="name bold">{{hero.name}}</div>
 
-    <div class="appearance">
-      <p class="bold">Appearance: </p>
-      <p>gender: {{hero.appearance.gender}}</p>
-      <p>race: {{hero.appearance.race}}</p>
-      <p>weight: {{hero.appearance.weight[1]}}</p>
-      <p>height: {{hero.appearance.height[1]}}</p>
-      <p>eye color: {{hero.appearance["eye-color"]}}</p>
-      <p>hair color: {{hero.appearance["hair-color"]}}</p>
+    <div *ngFor="let section of heroInformation" [class]="section.sectionClass">
+      <p class="bold">{{section.header}}: </p>
+      <p *ngFor="let item of section.description">
+        {{item?.title}}: {{item?.value}}
+      </p>
     </div>
-    <div class="biography">
-      <p class="bold">Biography: </p>
-      <p>aliases: {{hero.biography.aliases[0]}}, {{hero.biography.aliases[1]}}</p>
-      <p>alignment: {{hero.biography.alignment}}</p>
-      <p>alter egos: {{hero.biography["alter-egos"]}}</p>
-      <p>first appearance: {{hero.biography["first-appearance"]}}</p>
-      <p>full name: {{hero.biography["full-name"]}}</p>
-      <p>place of birth: {{hero.biography["place-of-birth"]}}</p>
-      <p>publisher: {{hero.biography.publisher}}</p>
-    </div>
-    <div class="connections">
-      <p class="bold">Connections: </p>
-      <p>group affiliation: {{hero.connections['group-affiliation']}}</p>
-      <p>relatives: {{hero.connections.relatives}}</p>
-    </div>
-    <div class="powerstats">
-      <p class="bold">Powerstats: </p>
-      <p>intelligence: {{hero.powerstats.intelligence}}</p>
-      <p>intelligence: {{hero.powerstats.strength}}</p>
-      <p>intelligence: {{hero.powerstats.speed}}</p>
-      <p>intelligence: {{hero.powerstats.durability}}</p>
-      <p>intelligence: {{hero.powerstats.combat}}</p>
-      <p>intelligence: {{hero.powerstats.power}}</p>
-    </div>
-    <div class="work">
-      <p class="bold">Work: </p>
-      <p>occupation: {{hero.work.occupation}}</p>
-      <p>base: {{hero.work.base}}</p>
-    </div>
+
   </div>
 </div>

@@ -13,6 +13,7 @@ import {HistoryTabComponent} from './shared/classes/history-tab/history-tab.comp
 import {PowerUpsTabComponent} from './shared/classes/power-ups-tab/power-ups-tab.component';
 import {HeroInfoPageComponent} from './hero-info-page/hero-info-page.component';
 import {HeroesBattlePageComponent} from './heroes-battle-page/heroes-battle-page.component';
+import {ResolveGuard} from './shared/services/resolve.guard';
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
     path: '', component: SiteLayoutComponent, children: [
       {path: 'select', component: HeroSelectionPageComponent, canActivate: [AuthGuard]},
       {path: 'select/:id', component: HeroInfoPageComponent, canActivate: [AuthGuard]},
-      {path: 'battle', component: HeroesBattlePageComponent, canActivate: [AuthGuard]},
+      {path: 'battle', component: HeroesBattlePageComponent, canActivate: [AuthGuard], resolve: {hero: ResolveGuard}},
       {path: 'info', component: UserInfoPageComponent, canActivate: [AuthGuard], children: [
           {path: '', redirectTo: 'list', pathMatch: 'full'},
           {path: 'list', component: HeroesListTabComponent, canActivateChild: [AuthGuard]},

@@ -1,23 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import {Hero, HistoryTab} from '../../interfaces';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {HistoryTab} from '../../interfaces';
+import {HistoryService} from '../history.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-history-tab',
   templateUrl: './history-tab.component.html',
   styleUrls: ['./history-tab.component.scss']
 })
-export class HistoryTabComponent implements OnInit {
+export class HistoryTabComponent implements OnInit, AfterViewInit {
 
   heroesList: HistoryTab[]
 
-  constructor() { }
+  constructor(private authService: AuthService,
+              private historyService: HistoryService) { }
 
   ngOnInit(): void {
-    this.heroesList = [
-      {battleDate: new Date(1603985301520), heroName: 'Sam', opponentName: 'Enemy3', result: true},
-      {battleDate: new Date(1603985903520), heroName: 'Maks', opponentName: 'Enemy2', result: true},
-      {battleDate: new Date(1603985502520), heroName: 'Akeks', opponentName: 'Enemy1', result: false},
-    ]
+    this.heroesList = this.historyService.battleList
+  }
+  ngAfterViewInit(): void {
+    const key = this.authService.userName
+    console.log(key)
+    if (key) {
+      this.heroesList = JSON.parse(localStorage.getItem(JSON.stringify('kebabCase')))
+    }
   }
 
   sortByDate(): HistoryTab[] {

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Token, User} from '../interfaces';
+import {HistoryService} from '../classes/history.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -7,15 +8,21 @@ export class AuthService {
   private token: Token | null
   validUser: boolean
   error = ''
+  userName = ''
+
+  constructor(private historyService: HistoryService) {
+  }
 
   register(user: User): void {
     localStorage.setItem(JSON.stringify(user.email), JSON.stringify(user))
+    this.historyService.setUserName(user.name)
     this.setToken()
   }
 
   login(user: User): boolean {
     const key = user.email
     const potentialValidUser = localStorage.getItem(JSON.stringify(key))
+    this.userName = user.name
 
     if (potentialValidUser) {
       this.validUser = JSON.parse(potentialValidUser).password === user.password

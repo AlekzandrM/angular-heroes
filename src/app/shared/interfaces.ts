@@ -59,6 +59,7 @@ export interface Hero {
   powerstats?: HeroPowerstats
   work?: HeroWork
   isVisible?: boolean
+  myHero?: boolean
 }
 export interface FetchHeroesResponse {
   response: string
@@ -73,11 +74,16 @@ export interface HistoryTab {
   result: boolean
 }
 
-export interface Powerups {
-  image?: string
-  title: string
-  description: string
-  active?: boolean
-  titleIsVisible?: boolean
-  isPicked?: boolean
+export interface PowerupInfo {
+  combat?: number
+  durability?: number
+  intelligence?: number
+  power?: number
+  speed?: number
+  strength?: number
+}
+export interface HeroInformationForm {
+  sectionClass?: string
+  header?: string
+  description?: object
 }

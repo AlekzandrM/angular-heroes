@@ -21,6 +21,8 @@ import { InputNameDirective } from './shared/directives/input-name.directive';
 import { HeroInfoPageComponent } from './hero-info-page/hero-info-page.component';
 import { HeroesBattlePageComponent } from './heroes-battle-page/heroes-battle-page.component';
 import { HeroInCombatComponent } from './shared/classes/hero-in-combat/hero-in-combat.component';
+import { LoaderComponent } from './shared/classes/loader/loader.component';
+import { NullToZeroPipe } from './shared/pipes/null-to-zero.pipe';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { HeroInCombatComponent } from './shared/classes/hero-in-combat/hero-in-c
     PowerUpsTabComponent,
     HeroInfoPageComponent,
     HeroesBattlePageComponent,
-    HeroInCombatComponent
+    HeroInCombatComponent,
+    LoaderComponent,
+    NullToZeroPipe
   ],
   imports: [
     BrowserModule,

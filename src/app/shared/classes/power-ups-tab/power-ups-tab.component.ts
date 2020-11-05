@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PowerupsConstructor, PowerupsService} from '../powerups.service';
+import {IPowerup, PowerupsService} from '../powerups.service';
 
 @Component({
   selector: 'app-power-ups-tab',
@@ -8,7 +8,7 @@ import {PowerupsConstructor, PowerupsService} from '../powerups.service';
 })
 export class PowerUpsTabComponent implements OnInit {
 
-  listOfPowerups: PowerupsConstructor[] = []
+  listOfPowerups: IPowerup[] = []
 
   constructor(private powerupsService: PowerupsService) {
   }
