@@ -82,8 +82,12 @@ export interface PowerupInfo {
   speed?: number
   strength?: number
 }
+export interface HeroInformationFormDescription {
+  title?: string
+  value?: string | string[]
+}
 export interface HeroInformationForm {
   sectionClass?: string
   header?: string
-  description?: object
+  description?: HeroInformationFormDescription[]
 }
