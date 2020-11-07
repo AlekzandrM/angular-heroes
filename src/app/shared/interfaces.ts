@@ -12,7 +12,6 @@ export interface Environment {
   production: boolean
   heroesUrl: string
 }
-
 export interface HeroPowerstats {
   combat?: string
   durability?: string
@@ -24,7 +23,6 @@ export interface HeroPowerstats {
 export interface HeroImage {
   url?: string
 }
-
 export interface HeroAppearance {
   gender?: string
   height?: string[]
@@ -67,14 +65,12 @@ export interface FetchHeroesResponse {
   results?: Hero[]
   resultsFor: string
 }
-
 export interface HistoryTab {
   battleDate: Date
   heroName: string
   opponentName: string
   result: boolean
 }
-
 export interface PowerupInfo {
   combat?: number
   durability?: number

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {HeroesService} from '../shared/services/heroes.service';
-import {Hero, HeroInformationForm} from '../shared/interfaces';
+import {Hero, HeroInformationForm, HeroInformationFormDescription} from '../shared/interfaces';
 
 @Component({
   selector: 'app-hero-info-page',
@@ -65,4 +65,10 @@ export class HeroInfoPageComponent implements OnInit {
     })
   }
 
+  trackByHeroInformation(index: number, item: HeroInformationForm): string {
+    return item.header
+  }
+  trackByHeroInformationDescription(index: number, item: HeroInformationFormDescription): string {
+    return item.title
+  }
 }

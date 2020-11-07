@@ -7,7 +7,6 @@ export class AuthService {
   private token: Token | null
   validUser: boolean
   error = ''
-  userName = ''
 
   register(user: User): void {
     user.previousBattles = []
@@ -16,13 +15,11 @@ export class AuthService {
   }
 
   login(user: User): boolean {
-    const key = user.email
-    const potentialValidUser = localStorage.getItem(JSON.stringify(key))
-    this.userName = user.name
+    const potentialValidUser = localStorage.getItem(JSON.stringify(['user']))
+    const correctPassword = JSON.parse(potentialValidUser).password
+    const correctEmail = JSON.parse(potentialValidUser).email
+    this.validUser = correctPassword === user.password && correctEmail === user.email
 
-    if (potentialValidUser) {
-      this.validUser = JSON.parse(potentialValidUser).password === user.password
-    }
     if (!this.validUser || !potentialValidUser) {
       this.error = 'Не верный email или пароль'
       return false

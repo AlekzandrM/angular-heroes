@@ -12,6 +12,7 @@ export interface IPowerup {
 
 @Injectable({providedIn: 'root'})
 export class PowerupsService {
+
   LIST_OF_POWERUPS: IPowerup[] = [
     new IPowerup({title: 'Captain America shield',
       description: 'durability +10', active: true, image: '../../assets/kashild.png', titleIsVisible: true, isPicked: false, usesCount: 3}),

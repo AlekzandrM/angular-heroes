@@ -10,7 +10,6 @@ export class HistoryTabComponent implements OnInit {
 
   heroesList: HistoryTab[]
 
-
   ngOnInit(): void {
     const previousBattles = JSON.parse(localStorage.getItem(JSON.stringify(['user'])))
     this.heroesList = previousBattles.previousBattles
@@ -42,5 +41,9 @@ export class HistoryTabComponent implements OnInit {
 
     this.heroesList = [...heroesListSortedByBattleResult]
     return this.heroesList
+  }
+
+  trackByHeroesList(index: number, item: HistoryTab): Date {
+    return item.battleDate
   }
 }

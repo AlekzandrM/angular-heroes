@@ -16,4 +16,8 @@ export class PowerUpsTabComponent implements OnInit {
   ngOnInit(): void {
     this.listOfPowerups = this.powerupsService.LIST_OF_POWERUPS
   }
+
+  trackByListOfPowerups(index: number, item: IPowerup): string {
+    return item.title
+  }
 }

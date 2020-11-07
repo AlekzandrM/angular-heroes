@@ -6,9 +6,9 @@
   <div class="info">
     <div class="name bold">{{hero.name}}</div>
 
-    <div *ngFor="let section of heroInformation" [class]="section.sectionClass">
+    <div *ngFor="let section of heroInformation; trackBy: trackByHeroInformation" [class]="section.sectionClass">
       <p class="bold">{{section.header}}: </p>
-      <p *ngFor="let item of section.description">
+      <p *ngFor="let item of section.description; trackBy: trackByHeroInformationDescription">
         {{item?.title}}: {{item?.value}}
       </p>
     </div>

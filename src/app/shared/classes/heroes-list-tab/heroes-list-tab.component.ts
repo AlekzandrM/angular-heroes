@@ -21,4 +21,8 @@ export class HeroesListTabComponent implements OnInit {
     this.selectedHeroes = this.selectedHeroes.filter(hero => hero.id !== heroToDelete.id)
     this.userService.deleteHero(heroToDelete)
   }
+
+  trackBySelectedHeroes(index: number, item: Hero): string {
+    return item.id
+  }
 }

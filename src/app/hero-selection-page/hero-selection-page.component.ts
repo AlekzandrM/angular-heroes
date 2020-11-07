@@ -62,10 +62,6 @@ export class HeroSelectionPageComponent implements OnDestroy {
     })
   }
 
-  ngOnDestroy(): void {
-      this.componentDestroyed$.next(true)
-  }
-
   replaceNulls(heroesList: Hero[]): void {
     heroesList.forEach(hero => {
       for (let [key, value] of Object.entries(hero.powerstats)) {
@@ -75,5 +71,16 @@ export class HeroSelectionPageComponent implements OnDestroy {
         hero.powerstats[key] = value
       }
     })
+  }
+
+  trackByHeroesList(index: number, item: string): string {
+    return item
+  }
+  trackByHeroesResults(index: number, item: Hero): string {
+    return item.id
+  }
+
+  ngOnDestroy(): void {
+    this.componentDestroyed$.next(true)
   }
 }
