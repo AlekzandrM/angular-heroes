@@ -1,0 +1,17 @@
+<div class="hero">
+  <div class="block_name">
+    <div class="block_name-avatar">
+      <img src="{{hero.image.url}}" alt="hero img">
+    </div>
+    <p class="block_name-name">{{hero.name}}</p>
+  </div>
+
+  <div class="block_stats">
+    <p>Combat: {{hero.powerstats.combat | nullToZero}} <span class="bonus" *ngIf="powerupInfoList && powerupInfoList.combat">+{{powerupInfoList.combat}}0</span></p>
+    <p>Durability: {{hero.powerstats.durability | nullToZero}} <span class="bonus" *ngIf="powerupInfoList && powerupInfoList.durability">+{{powerupInfoList.durability}}0</span></p>
+    <p>Intelligence: {{hero.powerstats.intelligence | nullToZero}} <span class="bonus" *ngIf="powerupInfoList && powerupInfoList.intelligence">+{{powerupInfoList.intelligence}}0</span></p>
+    <p>Power: {{hero.powerstats.power | nullToZero}} <span class="bonus" *ngIf="powerupInfoList && powerupInfoList.power">+{{powerupInfoList.power}}0</span></p>
+    <p>Speed: {{hero.powerstats.speed | nullToZero}} <span class="bonus" *ngIf="powerupInfoList && powerupInfoList.speed">+{{powerupInfoList.speed}}0</span></p>
+    <p>Strength: {{hero.powerstats.strength | nullToZero}} <span class="bonus" *ngIf="powerupInfoList && powerupInfoList.strength">+{{powerupInfoList.strength}}0</span></p>
+  </div>
+</div>

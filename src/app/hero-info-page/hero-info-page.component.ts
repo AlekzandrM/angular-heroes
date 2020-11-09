@@ -24,8 +24,15 @@ export class HeroInfoPageComponent implements OnInit {
 
   getHeroInformation(): HeroInformationForm[] {
     const {gender, race, weight, height, 'eye-color': eye, 'hair-color': hair} = this.hero.appearance
-    // tslint:disable-next-line:max-line-length
-    const {aliases, alignment, 'alter-egos': ae, 'first-appearance': fa, 'full-name': fn, 'place-of-birth': pob, publisher} = this.hero.biography
+    const {
+      aliases,
+      alignment,
+      'alter-egos': alterEgos,
+      'first-appearance': firstAppearance,
+      'full-name': fullName,
+      'place-of-birth': pob,
+      publisher
+    } = this.hero.biography
     const {'group-affiliation': gaff, relatives, } = this.hero.connections
     const {intelligence, durability, strength, speed, combat, power} = this.hero.powerstats
     const {occupation, base} = this.hero.work
@@ -38,9 +45,15 @@ export class HeroInfoPageComponent implements OnInit {
     }, {
       sectionClass: 'biography',
       header: 'Biography',
-      description: [{title: 'aliases', value: aliases}, {title: 'alignment', value: alignment}, {title: 'alter egos', value: ae},
-        // tslint:disable-next-line:max-line-length
-        {title: 'first appearance', value: fa}, {title: 'full name', value: fn}, {title: 'place of birth', value: pob}, {title: 'publisher', value: publisher}]
+      description: [
+        {title: 'aliases', value: aliases},
+        {title: 'alignment', value: alignment},
+        {title: 'alter egos', value: alterEgos},
+        {title: 'first appearance', value: firstAppearance},
+        {title: 'full name', value: fullName},
+        {title: 'place of birth', value: pob},
+        {title: 'publisher', value: publisher}
+        ]
     }, {
       sectionClass: 'connections',
       header: 'Connections',
@@ -48,9 +61,14 @@ export class HeroInfoPageComponent implements OnInit {
     }, {
       sectionClass: 'powerstats',
       header: 'Powerstats',
-      description: [{title: 'intelligence', value: intelligence}, {title: 'durability', value: durability},
-        // tslint:disable-next-line:max-line-length
-        {title: 'strength', value: strength}, {title: 'speed', value: speed}, {title: 'combat', value: combat}, {title: 'power', value: power}]
+      description: [
+        {title: 'intelligence', value: intelligence},
+        {title: 'durability', value: durability},
+        {title: 'strength', value: strength},
+        {title: 'speed', value: speed},
+        {title: 'combat', value: combat},
+        {title: 'power', value: power}
+        ]
     }, {
       sectionClass: 'work',
       header: 'Work',

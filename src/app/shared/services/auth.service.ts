@@ -24,16 +24,16 @@ export class AuthService {
       this.error = 'Не верный email или пароль'
       return false
     } else if (this.validUser) {
-      this.getToken()
+      this.setToken()
       return true
     }
   }
   setToken(): Token {
     // tslint:disable-next-line:no-bitwise
     const randomStr = `f${(~~(Math.random() * 1e8)).toString(16)}`
-    const expiresDate = new Date(new Date().getTime() + 3600).toString()
+    const expiresDate = new Date(new Date().getTime() + 3600 * 1000)
 
-    this.token = {token: randomStr, expiresIn: expiresDate}
+    this.token = {token: randomStr, expiresIn: expiresDate.toString()}
     localStorage.setItem('token', JSON.stringify(this.token))
     return this.token
   }
@@ -41,11 +41,10 @@ export class AuthService {
     const token = localStorage.getItem('token')
     const parsedToken = JSON.parse(token)
     const expiresDate = parsedToken.expiresIn
-    const expiredPeriod = new Date() > expiresDate
+    const expiredPeriod = new Date() > new Date(expiresDate)
 
     if (expiredPeriod) {
-      this.logout()
-      return null
+      return this.token = null
     }
     return this.token = parsedToken
   }
@@ -54,6 +53,6 @@ export class AuthService {
     return !!this.token
   }
   logout(): void {
-    localStorage.clear()
+    localStorage.removeItem('token')
   }
 }
