@@ -4,11 +4,11 @@
   </div>
 
   <div class="listPowerups">
-    <div *ngFor="let powerup of listOfPowerups">
+    <div *ngFor="let powerup of listOfPowerups; trackBy: trackByListOfPowerups">
       <div
         [ngClass]="{
         powerupIsPicked: powerup.isPicked,
-        powerupIsNotPickedPicked: !powerup.isPicked,
+        powerupIsNotPicked: !powerup.isPicked,
         powerup: true
         }"
       >

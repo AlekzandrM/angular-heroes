@@ -17,4 +17,8 @@ export class UserService {
   deleteHero(heroToDelete: Hero): void {
     this.selectedHeroes = this.selectedHeroes.filter(hero => hero.id !== heroToDelete.id )
   }
+
+  getMyHero(): Hero {
+    return this.selectedHeroes[this.selectedHeroes.length - 1]
+  }
 }

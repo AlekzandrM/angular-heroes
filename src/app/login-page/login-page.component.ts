@@ -48,6 +48,7 @@ export class LoginPageComponent implements OnInit {
       name: this.form.value.name
     }
     const registeredUser = this.authService.login(user)
+
     if (registeredUser) {
       this.router.navigate(['/select'])
     }

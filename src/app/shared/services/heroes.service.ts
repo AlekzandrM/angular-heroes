@@ -7,6 +7,8 @@ import {FetchHeroesResponse, Hero} from '../interfaces';
 @Injectable({providedIn: 'root'})
 export class HeroesService {
 
+  opponentId: string
+
   constructor(private http: HttpClient) {}
 
   getByName(name: string): Observable<FetchHeroesResponse> {
@@ -15,5 +17,9 @@ export class HeroesService {
 
   getById(id: string): Observable<Hero> {
     return  this.http.get<Hero>(`${environment.heroesUrl}/${id}`)
+  }
+
+  setOpponentId(id: string): void {
+    this.opponentId = id
   }
 }

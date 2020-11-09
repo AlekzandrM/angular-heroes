@@ -28,7 +28,7 @@
 
   <div *ngIf="heroesList.length > 0" class="chipsBlock">
     <div class="chipElement"
-         *ngFor="let chip of heroesList"
+      *ngFor="let chip of heroesList; trackBy: trackByHeroesList"
     ><span (click)="onFetchByChipOrLetter(chip)">{{chip}}</span>
     </div>
   </div>
@@ -36,14 +36,11 @@
   <div class="results">
     <p class="results_amount">Results: {{heroesResults? heroesResults.length : "0"}}</p>
 
-    <div
-      *ngIf="showResultsBlock"
-    >
+    <div *ngIf="showResultsBlock">
       <app-hero
-        *ngFor="let hero of heroesResults"
+        *ngFor="let hero of heroesResults; trackBy: trackByHeroesResults"
         [hero]="hero"
       ></app-hero>
     </div>
-
   </div>
 </div>

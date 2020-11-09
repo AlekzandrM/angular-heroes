@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let battleHistory of heroesList">
+      <tr *ngFor="let battleHistory of heroesList; trackBy: trackByHeroesList">
         <td>{{battleHistory.battleDate | date: "dd.MM.yyyy HH:mm:ss"}}</td>
         <td>{{battleHistory.heroName}}</td>
         <td>{{battleHistory.opponentName}}</td>

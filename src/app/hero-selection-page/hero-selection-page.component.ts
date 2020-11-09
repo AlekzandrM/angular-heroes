@@ -2,7 +2,7 @@ import {Component, OnDestroy} from '@angular/core';
 import {HeroesService} from '../shared/services/heroes.service';
 import {Subject} from 'rxjs';
 import {Hero} from '../shared/interfaces';
-import {takeUntil} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-hero-selection-page',
@@ -47,6 +47,10 @@ export class HeroSelectionPageComponent implements OnDestroy {
   fetchHeroes(): void {
     this.heroesService.getByName(this.name)
       .pipe(
+        map(response => {
+          this.replaceNulls(response.results)
+          return response
+        }),
         takeUntil(this.componentDestroyed$)
       )
       .subscribe(res => {
@@ -58,7 +62,25 @@ export class HeroSelectionPageComponent implements OnDestroy {
     })
   }
 
+  replaceNulls(heroesList: Hero[]): void {
+    heroesList.forEach(hero => {
+      for (let [key, value] of Object.entries(hero.powerstats)) {
+        if (value === 'null') {
+          value = '0'
+        }
+        hero.powerstats[key] = value
+      }
+    })
+  }
+
+  trackByHeroesList(index: number, item: string): string {
+    return item
+  }
+  trackByHeroesResults(index: number, item: Hero): string {
+    return item.id
+  }
+
   ngOnDestroy(): void {
-      this.componentDestroyed$.next(true)
+    this.componentDestroyed$.next(true)
   }
 }

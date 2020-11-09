@@ -1,6 +1,5 @@
 import {ElementRef} from '@angular/core';
 import * as M from '../../../assets/materialize-v1.0.0/materialize/js/materialize.js'
-// declare const M
 
 export interface Chip {
   tag?: string

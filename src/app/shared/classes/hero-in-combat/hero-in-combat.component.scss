@@ -1,0 +1,37 @@
+.hero {
+  margin: 10px 10px;
+  border: 1px solid black;
+  min-height: 350px;
+}
+.block_name {
+  padding: 5px;
+  text-align: center;
+  & .block_name-name {
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  & .block_name-avatar {
+  }
+  & .block_name-avatar img {
+    width: 115px;
+    height: 115px;
+  }
+}
+.block_select {
+  width: 100px;
+  & button {
+    position: relative;
+    top: 110px;
+  }
+}
+.block_stats {
+  margin: 0 5px;
+  padding: 0 5px;
+  & p {
+    margin-bottom: 10px;
+  }
+}
+.bonus {
+  color: green;
+}

@@ -34,7 +34,7 @@
           *ngIf="form.get('password').touched && form.get('password').invalid"
           class="helper-text red-text"
         >
-        <span  *ngIf="form.get('password').errors.required">Пароль не должен быть пустым. </span>
+        <span *ngIf="form.get('password').errors.required">Пароль не должен быть пустым. </span>
         <span *ngIf="form.get('password').errors.userPassword">Пример корректного пароля: ssD12@#$dd. </span>
         <span *ngIf="form.get('password').errors.minlength">
           Пароль должен быть не менее {{form.get('password').errors.minlength.requiredLength}} символов,
@@ -63,7 +63,6 @@
         </span>
       </div>
     </div>
-
   </div>
 
   <div class="card-action">

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Hero, HistoryTab} from '../../interfaces';
+import {Component, OnInit} from '@angular/core';
+import {HistoryTab} from '../../interfaces';
 
 @Component({
   selector: 'app-history-tab',
@@ -10,14 +10,12 @@ export class HistoryTabComponent implements OnInit {
 
   heroesList: HistoryTab[]
 
-  constructor() { }
-
   ngOnInit(): void {
-    this.heroesList = [
-      {battleDate: new Date(1603985301520), heroName: 'Sam', opponentName: 'Enemy3', result: true},
-      {battleDate: new Date(1603985903520), heroName: 'Maks', opponentName: 'Enemy2', result: true},
-      {battleDate: new Date(1603985502520), heroName: 'Akeks', opponentName: 'Enemy1', result: false},
-    ]
+    this.heroesList = this.getPreviousBattles()
+  }
+
+  getPreviousBattles(): HistoryTab[] {
+    return JSON.parse(localStorage.getItem(JSON.stringify(['user']))).previousBattles
   }
 
   sortByDate(): HistoryTab[] {
@@ -46,5 +44,9 @@ export class HistoryTabComponent implements OnInit {
 
     this.heroesList = [...heroesListSortedByBattleResult]
     return this.heroesList
+  }
+
+  trackByHeroesList(index: number, item: HistoryTab): Date {
+    return item.battleDate
   }
 }

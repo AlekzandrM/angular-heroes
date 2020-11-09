@@ -2,6 +2,7 @@ export interface User {
   email: string
   password: string
   name?: string
+  previousBattles?: HistoryTab[]
 }
 export interface Token {
   token: string
@@ -11,7 +12,6 @@ export interface Environment {
   production: boolean
   heroesUrl: string
 }
-
 export interface HeroPowerstats {
   combat?: string
   durability?: string
@@ -23,7 +23,6 @@ export interface HeroPowerstats {
 export interface HeroImage {
   url?: string
 }
-
 export interface HeroAppearance {
   gender?: string
   height?: string[]
@@ -59,25 +58,33 @@ export interface Hero {
   powerstats?: HeroPowerstats
   work?: HeroWork
   isVisible?: boolean
+  myHero?: boolean
 }
 export interface FetchHeroesResponse {
   response: string
   results?: Hero[]
   resultsFor: string
 }
-
 export interface HistoryTab {
   battleDate: Date
   heroName: string
   opponentName: string
   result: boolean
 }
-
-export interface Powerups {
-  image?: string
-  title: string
-  description: string
-  active?: boolean
-  titleIsVisible?: boolean
-  isPicked?: boolean
+export interface PowerupInfo {
+  combat?: number
+  durability?: number
+  intelligence?: number
+  power?: number
+  speed?: number
+  strength?: number
+}
+export interface HeroInformationFormDescription {
+  title?: string
+  value?: string | string[]
+}
+export interface HeroInformationForm {
+  sectionClass?: string
+  header?: string
+  description?: HeroInformationFormDescription[]
 }
