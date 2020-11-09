@@ -1,0 +1,72 @@
+<div class="container">
+
+  <div class="block">
+    <app-hero-in-combat
+      [powerupInfo]="poweupInfo"
+      [hero]="myHero"
+    ></app-hero-in-combat>
+  </div>
+
+  <div class="main">
+    <div class="start">
+      <p class="start_name">{{myHero.name}}</p>
+      <button class="start_button" (click)="startBattle()">Start</button>
+      <p class="start_name" *ngIf="opponentIsLoaded">{{opponentHero.name}}</p>
+    </div>
+
+    <div>
+      <p>Your powerups: </p>
+      <div class="wrap" *ngIf="listOfPickedPowerups.length > 0">
+        <div class="pickedPowerups listPowerups" *ngFor="let pickedPowerup of listOfPickedPowerups; trackBy: trackByListOfPickedPowerups">
+          <img src="{{pickedPowerup.image}}" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="powerups">
+      <div *ngFor="let powerup of listOfPowerups; trackBy: trackByListOfPowerups">
+        <div
+          [ngClass]="{
+          powerupIsPicked: powerup.isPicked,
+          powerupIsNotPickedPicked: !powerup.isPicked,
+          powerup: true
+          }"
+        >
+          <div class="smallBlock"
+               (mouseenter)="powerup.titleIsVisible = true"
+               (mouseleave)="powerup.titleIsVisible = false"
+               (click)="pickPowerup(powerup)"
+               [ngClass]="{powerupIsPicked: powerup.isPicked, powerup: true}"
+          >
+            <img src="{{powerup.image}}" alt="">
+          </div>
+          <div class="bigBlock" *ngIf="powerup.titleIsVisible">
+            <p class="title">{{powerup.title}}</p>
+            <p>{{powerup.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loader" *ngIf="loaderActive">
+      <app-loader></app-loader>
+    </div>
+  </div>
+
+  <div class="block">
+    <div *ngIf="opponentIsLoaded">
+      <app-hero-in-combat
+        [hero]="opponentHero"
+      ></app-hero-in-combat>
+    </div>
+  </div>
+
+  <div class="modalBlock" *ngIf="showModal">
+    <div class="modalBlock-body">
+      <div class="winner">{{fightResult}}</div>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+

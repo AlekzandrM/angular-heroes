@@ -1,0 +1,28 @@
+<div >
+  <table class="table">
+    <thead>
+      <tr>
+        <th (click)="sortByDate()">
+          <p>Battle date</p>
+        </th>
+        <th (click)="sortByHeroName()">
+          <p>Hero name</p>
+        </th>
+        <th (click)="sortByOpponentName()">
+          <p>Opponent name</p>
+        </th>
+        <th (click)="sortByBattleResult()">
+          <p>Battle result</p>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let battleHistory of heroesList; trackBy: trackByHeroesList">
+        <td>{{battleHistory.battleDate | date: "dd.MM.yyyy HH:mm:ss"}}</td>
+        <td>{{battleHistory.heroName}}</td>
+        <td>{{battleHistory.opponentName}}</td>
+        <td>{{battleHistory.result? 'win' : 'lose'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

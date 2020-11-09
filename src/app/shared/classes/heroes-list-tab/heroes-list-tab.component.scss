@@ -1,0 +1,60 @@
+.wrap {
+  padding: 5px;
+  position: relative;
+}
+.block {
+  margin: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border: 1px solid black;
+}
+.block_name {
+  padding: 5px;
+  & .block_name-name {
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  & .block_name-avatar img {
+    width: 100px;
+    height: 100px;
+  }
+}
+.block_select {
+  display: flex;
+  position: relative;
+  top: 110px;
+  & button {
+   margin: 0 10px;
+  }
+}
+.block_stats {
+  margin: 5px;
+  padding: 5px;
+  & p {
+    margin-bottom: 10px;
+  }
+}
+
+.plus {
+  position: absolute;
+  right: -50px;
+  bottom: 40px;
+  width: 40px;
+  height: 40px;
+  padding: 5px 0;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #26A69A;
+  cursor: pointer;
+}
+.plus:hover {
+  background-color: #49C9BD;
+}

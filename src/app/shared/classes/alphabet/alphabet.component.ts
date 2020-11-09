@@ -19,4 +19,8 @@ export class AlphabetComponent {
     this.isVisible = false
     this.emitLetter.emit(this.currentLetter)
   }
+
+  trackByLetters(index: number, item: string): number {
+    return index
+  }
 }

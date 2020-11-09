@@ -5,7 +5,7 @@
   <div class="wrapper" *ngIf="isVisible">
     <div
       class="letter"
-      *ngFor="let letter of letters"
+      *ngFor="let letter of letters; trackBy: trackByLetters"
     >
       <span (click)="pickLetter(letter)">
         {{letter}}

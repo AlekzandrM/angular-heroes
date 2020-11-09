@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="header">
+    <p class="header_name">List of powerups</p>
+  </div>
+
+  <div class="listPowerups">
+    <div *ngFor="let powerup of listOfPowerups; trackBy: trackByListOfPowerups">
+      <div
+        [ngClass]="{
+        powerupIsPicked: powerup.isPicked,
+        powerupIsNotPicked: !powerup.isPicked,
+        powerup: true
+        }"
+      >
+        <div class="smallBlock"><img src="{{powerup.image}}" alt=""></div>
+        <div class="bigBlock">
+          <p class="title">{{powerup.title}}</p>
+          <p>{{powerup.description}}</p>
+        </div>
+        <div class="smallBlock">uses left {{powerup.usesCount}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

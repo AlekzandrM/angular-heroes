@@ -1,0 +1,21 @@
+.blockInput {
+  display: flex;
+  justify-content: center;
+  & span {
+    width: 33.3%;
+    max-width: 100px;
+    margin: 0 20px 10px;
+  }
+  & button {
+    width: 100px;
+    background-color: #26A69A;
+    color: white;
+    border-radius: 10px;
+    padding: 7px;
+    border: 2px solid white;
+  }
+  & button:hover {
+    background-color: #49C9BD;
+    border: 2px solid #0099E3;
+  }
+}

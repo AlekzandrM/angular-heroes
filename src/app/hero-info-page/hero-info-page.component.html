@@ -1,0 +1,17 @@
+<div class="container wrap" *ngIf="hero">
+  <div class="avatar">
+    <img src="{{hero.image.url}}" alt="">
+  </div>
+
+  <div class="info">
+    <div class="name bold">{{hero.name}}</div>
+
+    <div *ngFor="let section of heroInformation; trackBy: trackByHeroInformation" [class]="section.sectionClass">
+      <p class="bold">{{section.header}}: </p>
+      <p *ngFor="let item of section.description; trackBy: trackByHeroInformationDescription">
+        {{item?.title}}: {{item?.value}}
+      </p>
+    </div>
+
+  </div>
+</div>

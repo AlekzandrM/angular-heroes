@@ -1,0 +1,32 @@
+<div class="wrap">
+
+  <div class="results">
+    <p class="results_amount">Selected heroes: {{selectedHeroes? selectedHeroes.length : "0"}}</p>
+
+    <div  *ngIf="selectedHeroes.length > 0">
+      <div class="block" *ngFor="let hero of selectedHeroes; trackBy: trackBySelectedHeroes">
+        <div class="block_name">
+          <p class="block_name-name">{{hero.name}}</p>
+          <div class="block_name-avatar">
+            <img src="{{hero.image.url}}" alt="hero img">
+          </div>
+        </div>
+
+        <div class="block_stats">
+          <p>Combat: {{hero.powerstats.combat}}</p>
+          <p>durability: {{hero.powerstats.durability}}</p>
+          <p>Intelligence: {{hero.powerstats.intelligence}}</p>
+          <p>Power: {{hero.powerstats.power}}</p>
+          <p>Speed: {{hero.powerstats.speed}}</p>
+          <p>Strength: {{hero.powerstats.strength}}</p>
+        </div>
+
+        <div class="block_select">
+          <button class="btn btn-block" [routerLink]="['/select', hero.id]">select</button>
+          <button class="btn btn-block" (click)="deleteHero(hero)">delete</button>
+        </div>
+      </div>
+      <div class="plus" routerLink="/select">+</div>
+    </div>
+  </div>
+</div>

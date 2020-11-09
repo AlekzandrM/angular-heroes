@@ -1,0 +1,25 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  & div {
+    padding: 5px;
+  }
+  & .avatar img{
+    width: 150px;
+    height: 150px;
+  }
+}
+.bold {
+  font-weight: bold;
+}
+.avatar {
+  background-color: rgba(158, 158, 158, 5);
+}
+.info {
+  background-color: rgba(158, 158, 158, .1);
+}
+.name {
+  color: #26A69A;
+  font-size: 1.5rem;
+  text-align: center;
+}
